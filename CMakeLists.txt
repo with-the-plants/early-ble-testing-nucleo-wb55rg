@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.20.0)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-project(usb_testing)
+project(motp_testing)
 
 if((NOT CONFIG_DISK_DRIVER_FLASH) AND
    (NOT CONFIG_DISK_DRIVER_RAM) AND

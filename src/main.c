@@ -34,14 +34,14 @@ void main(void)
 		LOG_ERR("Failed to setup BLE");
 		return;
 	}
+	LOG_INF("The devce is in BLE peripheral mode.");
 
 	ret = usb_enable(NULL); // XXX
 	if (ret != 0) {
 		LOG_ERR("Failed to enable USB");
 		return;
 	}
-
-	LOG_INF("The device is put in USB mass storage mode.\n");
+	LOG_INF("The device is in USB mass storage mode.");
 
 	LOG_INF("Starting loop");
 	/* Implement notification. At the moment there is no suitable way
