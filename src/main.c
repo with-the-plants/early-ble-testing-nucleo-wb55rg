@@ -21,7 +21,8 @@ LOG_MODULE_REGISTER(main);
 
 // XXX
 extern void usb_disk_setup(void);
-extern int ble_setup(void);
+
+extern int  ble_setup(void);
 extern void ble_loop(void);
 
 void main(void)
