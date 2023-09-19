@@ -9,7 +9,7 @@
 #include <errno.h>
 
 #include <zephyr/types.h>
-#include <zephyr/zephyr.h>
+#include <zephyr/kernel.h>
 
 #include <zephyr/logging/log.h>
 

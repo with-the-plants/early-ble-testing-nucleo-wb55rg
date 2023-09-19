@@ -11,4 +11,10 @@ if((NOT CONFIG_DISK_DRIVER_FLASH) AND
 endif()
 
 FILE(GLOB app_sources src/*.c)
-target_sources(app PRIVATE ${app_sources})
+if (CONFIG_BT_ISO_UNICAST)
+  FILE(GLOB iso_sources src/iso/*.c)
+endif()
+if (CONFIG_BT_AUDIO)
+  FILE(GLOB audio_sources src/audio/*.c)
+endif()
+target_sources(app PRIVATE ${app_sources} ${iso_sources} ${audio_sources})

@@ -13,7 +13,7 @@
 #include <zephyr/types.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/byteorder.h>
-#include <zephyr/zephyr.h>
+#include <zephyr/kernel.h>
 
 #include <zephyr/settings/settings.h>
 
@@ -102,9 +102,11 @@ static struct bt_conn_auth_cb auth_cb_display = {
 	.cancel = auth_cancel,
 };
 
+// XXX
 extern void ble_services_setup(void);
 extern void ble_services_loop(void);
 extern void ble_iso_setup(void);
+extern void ble_audio_start(void);
 
 int ble_setup(void)
 {
@@ -118,7 +120,14 @@ int ble_setup(void)
 	bt_conn_auth_cb_register(&auth_cb_display);
 
 	ble_services_setup();
-	ble_iso_setup();
+
+	if (IS_ENABLED(CONFIG_BT_ISO_PERIPHERAL)) {
+		ble_iso_setup();
+	}
+
+	if (IS_ENABLED(CONFIG_BT_AUDIO)) {
+		ble_audio_start();
+	}
 
 	printk("Bluetooth initialized\n");
 
